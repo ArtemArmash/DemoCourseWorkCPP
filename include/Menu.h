@@ -5,11 +5,13 @@
 #include "Date.h"
 #include "Buyer.h"
 #include "Order.h"
+#include "Store.h"
 class Menu {
 private:
     std::vector<Supplier> suppliers;
     std::vector<Buyer>buyers;
     std::vector<Order>orders;
+    std::vector<Store>stores;
 public:
     void addSupplier(const std::string& name, const std::string& contactInfo);
 
@@ -24,5 +26,12 @@ public:
 
     std::vector<Buyer>& getBuyers();
     void addBuyer(const Buyer& buyer);
+
+    void addStore(const Store& store);
+    void addProductToStore(const std::string& nameStore, const std::string& productName,
+        int quantity, double price);
+
+    void viewStoreProducts(const std::string& nameStore);
+
 
 };

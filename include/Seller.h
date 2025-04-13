@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "Sale.h"  // Подключаем заголовочный файл Sale.h
+#include "Sale.h"  
 
 class Seller {
 private:
@@ -18,8 +18,6 @@ public:
     void addSale(const Sale& sale);
     double totalSales() const;
 
-
-    // Геттеры для доступа к данным продавца
     std::string getName() const { return name; }
     int getId() const { return id; }
     double getSalary() const { return salary; }

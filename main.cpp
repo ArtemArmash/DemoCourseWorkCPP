@@ -16,6 +16,9 @@ int main() {
         std::cout << "4. Add Buyer\n";  // ƒодати покупц€
         std::cout << "5. Add Order for Buyer\n";  // ƒодати замовленн€ дл€ покупц€
         std::cout << "6. Find Buyers by Product, Date, and Quantity\n";  // «найти покупц≥в за товаром, датою та к≥льк≥стю
+        std::cout << "7. Create store point\n";
+        std::cout << "8. Add Product to Store\n";
+        std::cout << "9. Display Products in Store\n";;
         std::cout << "0. Exit\n";  // ¬их≥д
 
         std::cout << "Choose an option: ";  // ¬ибер≥ть опц≥ю
@@ -156,7 +159,48 @@ int main() {
             std::cout << "Total count: " << result.size() << "\n";  // «агальна к≥льк≥сть
             break;
         }
+        case 7:
+        {
+            std::string nameStore, type, location;
+            std::cout << "Enter name of Store: ";
+            std::getline(std::cin, nameStore);
+            std::cout << "Enter type (Department store, Shop, Booth, Kiosk): ";
+            std::getline(std::cin, type);
+            std::cout << "Enter location: ";
+            std::getline(std::cin, location);
 
+            Store store(nameStore, type, location);
+            menu.addStore(store);
+
+            break;
+        }
+        case 8:
+        {
+            std::string nameStore, productName;
+            double price;
+            int quantity;
+            std::cout << "Enter name of Store: ";
+            std::getline(std::cin, nameStore);
+            std::cout << "Enter product name: ";  // ¬вед≥ть назву товару
+            std::getline(std::cin, productName);
+            std::cout << "Enter quantity: ";  // ¬вед≥ть к≥льк≥сть
+            std::cin >> quantity;
+            std::cout << "Enter product price: ";  // ¬вед≥ть ц≥ну товару
+            std::cin >> price;
+            menu.addProductToStore(nameStore, productName, price, quantity);
+
+            break;
+        }
+        case 9:
+        {
+            std::string nameStore;
+            std::cout << "Enter name of Store: ";
+            std::getline(std::cin, nameStore);
+
+            menu.viewStoreProducts(nameStore);
+
+            break;
+        }
         case 0:
             std::cout << "Exiting program.\n";  // ¬их≥д з програми
             break;

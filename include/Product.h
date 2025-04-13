@@ -10,6 +10,7 @@ public:
     double price;
 
     Product(const std::string& name, int quantity, const Date& supplyDate, double price);
+    Product(const std::string& name, int quantity, double price);
     Product(const std::string& name, double price);
     const std::string& getName() const;
     int getQuantity() const;

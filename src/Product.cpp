@@ -3,6 +3,9 @@
 Product::Product(const std::string& name, int quantity, const Date& supplyDate, double price)
     : name(name), quantity(quantity), supplyDate(supplyDate), price(price) {}
 
+Product::Product(const std::string& name, int quantity, double price) 
+    : name(name), quantity(quantity),  price(price) {}
+
 Product::Product(const std::string& name, double price) 
     : name{ name }, price{ price } { }
 

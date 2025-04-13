@@ -1,6 +1,6 @@
 #include "../include/Menu.h"
 #include <iostream>
-
+#include <map>
 
 
 void Menu::addSupplier(const std::string& name, const std::string& contactInfo) {
@@ -67,5 +67,28 @@ std::vector<Buyer>& Menu::getBuyers()
 void Menu::addBuyer(const Buyer& buyer) {
     buyers.push_back(buyer);
 }
+void Menu::addStore(const Store& store) {
+    stores.push_back(store);
+}
+void Menu::addProductToStore(const std::string& nameStore, const std::string& productName, int quantity, double price)
+{
+    for (auto& store : stores) {
+        if (store.getName() == nameStore) {
+            store.addProduct(Product(productName, quantity, price));
+        }
+    }
+}
+
+void Menu::viewStoreProducts(const std::string& nameStore)
+{
+    for (auto& store : stores) {
+        if (store.getName() == nameStore) {
+            store.displayProductCatalog();
+            return;
+        }
+    }
+    std::cout << "Store with name " << nameStore << " not found.\n";
+}
+
 
 
