@@ -1,25 +1,21 @@
-#pragma once
+п»ї#pragma once
 
-#include <iostream>
-#include <vector>
 #include <string>
-#include <Order.h>
+#include <vector>
+#include "Order.h"
 
 class Buyer {
 private:
     std::string name;
-    int id;
+    std::string email;
     std::vector<Order> orders;
 
 public:
-    Buyer(const std::string& name, int id)
-        : name(name), id(id) {}
+    Buyer(const std::string& name, const std::string& email);
 
-    void addOrder(const Order& order) {
-        orders.push_back(order);
-    }
-
-    void displayBuyerInfo() const {
-        std::cout << "Покупець: " << name << "\nID: " << id << std::endl;
-    }
+    std::string getEmail() const;
+    void displayBuyerInfo() const;
+    bool hasRelevantOrder(const std::string& productName, const std::string& startDate,
+        const std::string& endDate, int minQuantity) const;
+    void addOrder(const Order& order);
 };

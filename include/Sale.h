@@ -4,30 +4,21 @@
 #include <string>
 #include "Buyer.h"
 #include "Product.h"
-#include "Seller.h"
+
+class Seller;
+
 class Sale {
 private:
     int id;
-    Seller seller;
-    Buyer buyer;
+    Seller* seller;
+    Buyer* buyer;
     std::vector<Product> products;
     double totalPrice;
     std::string saleDate;
 
 public:
-    Sale(int id, const Seller& seller, const Buyer& buyer, const std::vector<Product>& products, const std::string& saleDate)
-        : id(id), seller(seller), buyer(buyer), products(products), saleDate(saleDate) {
-        calculateTotalPrice();
-    }
+    Sale(int id, Seller* seller, Buyer* buyer, const std::vector<Product>& products, const std::string& saleDate);
 
-    void calculateTotalPrice() {
-        totalPrice = 0;
-        for (const auto& product : products) {
-            totalPrice += product.getPrice();
-        }
-    }
-
-    double getTotalPrice() const {
-        return totalPrice;
-    }
+    void calculateTotalPrice();
+    double getTotalPrice() const;
 };

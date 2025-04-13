@@ -2,30 +2,27 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "Buyer.h"
 #include "Product.h"
+
+class Buyer;
+
 class Order {
 private:
     int id;
-    Buyer buyer;
+    Buyer* buyer;
     std::vector<Product> products;
     double totalPrice;
     std::string orderDate;
 
 public:
-    Order(int id, const Buyer& buyer, const std::vector<Product>& products, const std::string& orderDate)
-        : id(id), buyer(buyer), products(products), orderDate(orderDate) {
-        calculateTotalPrice();
-    }
+    Order() = default;
+    Order(int id, Buyer* buyer, const std::vector<Product>& products, const std::string& orderDate);
 
-    void calculateTotalPrice() {
-        totalPrice = 0;
-        for (const auto& product : products) {
-            totalPrice += product.getPrice();
-        }
-    }
+    static int generateOrderId();
 
-    double getTotalPrice() const {
-        return totalPrice;
-    }
+    void calculateTotalPrice();
+    double getTotalPrice() const;
+
+    bool containsProduct(const std::string& productName, int minQuantity = 1) const;
+    bool isInDateRange(const std::string& startDate, const std::string& endDate) const;
 };

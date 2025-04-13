@@ -1,8 +1,8 @@
-#pragma once
-#include <iostream>
+п»ї#pragma once
 #include <vector>
 #include <string>
-#include <Store.h>
+#include "Store.h"
+
 class Manager {
 private:
     std::string name;
@@ -10,14 +10,7 @@ private:
     std::vector<Store> stores;
 
 public:
-    Manager(const std::string& name, int id)
-        : name(name), id(id) {}
-
-    void addStore(const Store& store) {
-        stores.push_back(store);
-    }
-
-    void displayManagerInfo() const {
-        std::cout << "Менеджер: " << name << "\nID: " << id << std::endl;
-    }
+    Manager(const std::string& name, int id);
+    void addStore(const Store& store);
+    void displayManagerInfo() const;
 };

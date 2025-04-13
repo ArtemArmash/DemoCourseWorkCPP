@@ -1,5 +1,7 @@
-#include "Menu.h"
+#include "../include/Menu.h"
 #include <iostream>
+
+
 
 void Menu::addSupplier(const std::string& name, const std::string& contactInfo) {
     suppliers.push_back(Supplier(name, contactInfo));
@@ -20,7 +22,6 @@ void Menu::querySuppliersForProduct(const std::string& productName, int minQuant
     int supplierCount = 0;
 
     std::cout << "Постачальники, які постачають продукцію: " << productName << " в зазначений період:\n";
-
 
     for (const auto& supplier : suppliers) {
         int totalQuantity = 0;
@@ -45,3 +46,26 @@ void Menu::querySuppliersForProduct(const std::string& productName, int minQuant
 
     std::cout << "Всього постачальників: " << supplierCount << "\n";
 }
+
+std::vector<Buyer> Menu::getBuyersByProductAndDate(const std::vector<Buyer>& buyers, 
+    const std::string& productName, const std::string& startDate, const std::string& endDate, int minQuantity)
+{
+    std::vector<Buyer>result;
+    for (const auto& buyer : buyers) {
+        if (buyer.hasRelevantOrder(productName, startDate, endDate, minQuantity)) {
+            result.push_back(buyer);
+        }
+    }
+    return result;
+}
+
+std::vector<Buyer>& Menu::getBuyers()
+{
+    return buyers;
+
+}
+void Menu::addBuyer(const Buyer& buyer) {
+    buyers.push_back(buyer);
+}
+
+

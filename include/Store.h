@@ -1,9 +1,11 @@
-#pragma once
+п»ї#pragma once
+
 #include <iostream>
 #include <vector>
 #include <string>
 #include "Product.h"
 #include "Seller.h"
+
 class Store {
 private:
     std::string name;
@@ -12,18 +14,9 @@ private:
     std::vector<Seller> sellers;
 
 public:
-    Store(const std::string& name, const std::string& location)
-        : name(name), location(location) {}
+    Store(const std::string& name, const std::string& location);
 
-    void addProduct(const Product& product) {
-        products.push_back(product);
-    }
-
-    void addSeller(const Seller& seller) {
-        sellers.push_back(seller);
-    }
-
-    void displayStoreInfo() const {
-        std::cout << "Магазин: " << name << "\nРозташування: " << location << std::endl;
-    }
+    void addProduct(const Product& product);
+    void addSeller(const Seller& seller);
+    void displayStoreInfo() const;
 };

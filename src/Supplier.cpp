@@ -1,4 +1,4 @@
-#include "Supplier.h"
+#include "../include/Supplier.h"
 
 Supplier::Supplier(const std::string& name, const std::string& contactInfo)
     : name(name), contactInfo(contactInfo) {}

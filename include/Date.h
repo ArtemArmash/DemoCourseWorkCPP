@@ -1,8 +1,7 @@
 #pragma once
+
 #include <string>
 #include <ctime>
-#include <sstream>
-#include <iomanip>
 
 class Date {
 private:
@@ -10,17 +9,11 @@ private:
 
 public:
     Date();
-
-    
     Date(const std::string& dateStr);
 
-    
     std::string toString() const;
     bool operator<=(const Date& other) const;
-
     bool operator>=(const Date& other) const;
-
     bool operator==(const Date& other) const;
-
-    std::tm getDate() const { return date; }
+    std::tm getDate() const;
 };

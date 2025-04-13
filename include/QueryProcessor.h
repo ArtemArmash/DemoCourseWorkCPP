@@ -2,9 +2,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <Request.h>
-#include <Sale.h>
-#include <Order.h>
+#include "Request.h"
+#include "Sale.h"
+#include "Order.h"
 
 class QueryProcessor {
 private:
