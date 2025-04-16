@@ -32,6 +32,11 @@ public:
         int quantity, double price);
 
     void viewStoreProducts(const std::string& nameStore);
+    
+    void printProductInfoInStore(Store& store, const std::string& productName);
 
+    void getProdctInfoAllStores(const std::string& productName);
+    void getProductInfoByStoreType(const std::string& productName, const std::string& storeType);
+    void getProductInfoByStore(const std::string& productName, const std::string& storeId);
 
 };

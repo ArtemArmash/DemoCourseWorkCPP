@@ -1,6 +1,14 @@
 #include "../include/Menu.h"
 #include <iostream>
 #include <map>
+#include <algorithm>
+bool containsIgnoreCase(const std::string& str, const std::string& substr) {
+    auto lowerStr = str;
+    auto lowerSubstr = substr;
+    std::transform(lowerStr.begin(), lowerStr.end(), lowerStr.begin(), ::tolower);
+    std::transform(lowerSubstr.begin(), lowerSubstr.end(), lowerSubstr.begin(), ::tolower);
+    return lowerStr.find(lowerSubstr) != std::string::npos;
+}
 
 
 void Menu::addSupplier(const std::string& name, const std::string& contactInfo) {
@@ -90,5 +98,41 @@ void Menu::viewStoreProducts(const std::string& nameStore)
     std::cout << "Store with name " << nameStore << " not found.\n";
 }
 
+void Menu::printProductInfoInStore(Store& store, const std::string& productName) {
+    std::cout << "\nStore point: " << store.getName() << std::endl;
+    bool found = false;
+    for (auto& product : store.getProducts()) {
+        if (containsIgnoreCase(product.getName(), productName)) {
+            std::cout << "Product: " << product.getName()
+                << " | Quantity: " << product.getQuantity()
+                << " | Price: " << product.getPrice() << std::endl;
+            found = true;
+        }
+    }
+    if (!found) {
+        std::cout << "Product not found!\n";
+    }
+}
 
 
+void Menu::getProdctInfoAllStores(const std::string& productName){
+    for (auto& store : stores) {
+        printProductInfoInStore(store, productName);
+    }
+}
+void Menu::getProductInfoByStoreType(const std::string& productName, const std::string& storeType) {
+    for (auto& store : stores) {
+        if (store.getType() == storeType) {
+            printProductInfoInStore(store, productName);
+        }
+    }
+}
+
+void Menu::getProductInfoByStore(const std::string& productName, const std::string& nameStore)
+{
+    for (auto& store : stores) {
+        if (store.getName() == nameStore) {
+            printProductInfoInStore(store, productName);
+        }
+    }
+}

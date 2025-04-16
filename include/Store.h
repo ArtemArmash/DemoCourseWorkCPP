@@ -19,7 +19,8 @@ public:
     
     std::string getName()const { return name; }
     std::string getLocation()const { return location; }
-
+    std::string getType()const { return type; }
+    std::vector<Product>& getProducts() { return products; }
     void addProduct(const Product& product);
     void addSeller(const Seller& seller);
     void displayStoreInfo() const;

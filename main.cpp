@@ -19,6 +19,9 @@ int main() {
         std::cout << "7. Create store point\n";
         std::cout << "8. Add Product to Store\n";
         std::cout << "9. Display Products in Store\n";;
+        std::cout << "10. View product info in ALL stores\n";        // Показати товар у всіх магазинах
+        std::cout << "11. View product info by store TYPE\n";        // Показати товар у магазинах певного типу
+        std::cout << "12. View product info in a specific STORE\n";
         std::cout << "0. Exit\n";  // Вихід
 
         std::cout << "Choose an option: ";  // Виберіть опцію
@@ -187,7 +190,7 @@ int main() {
             std::cin >> quantity;
             std::cout << "Enter product price: ";  // Введіть ціну товару
             std::cin >> price;
-            menu.addProductToStore(nameStore, productName, price, quantity);
+            menu.addProductToStore(nameStore, productName, quantity, price);
 
             break;
         }
@@ -201,6 +204,35 @@ int main() {
 
             break;
         }
+        case 10: {
+            // Інфо про товар у всіх магазинах
+            std::string productName;
+            std::cout << "Enter product name: ";
+            std::getline(std::cin >> std::ws, productName);
+            menu.getProdctInfoAllStores(productName);
+            break;
+        }
+        case 11: {
+            // Інфо про товар у магазинах певного типу
+            std::string productName, storeType;
+            std::cout << "Enter product name: ";
+            std::getline(std::cin >> std::ws, productName);
+            std::cout << "Enter store type: ";
+            std::getline(std::cin >> std::ws, storeType);
+            menu.getProductInfoByStoreType(productName, storeType);
+            break;
+        }
+        case 12: {
+            // Інфо про товар у конкретному магазині
+            std::string productName, storeName;
+            std::cout << "Enter product name: ";
+            std::getline(std::cin >> std::ws, productName);
+            std::cout << "Enter store name: ";
+            std::getline(std::cin >> std::ws, storeName);
+            menu.getProductInfoByStore(productName, storeName);
+            break;
+        }
+
         case 0:
             std::cout << "Exiting program.\n";  // Вихід з програми
             break;
